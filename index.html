@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PikachuMazzinga | Portfolio</title>
+
+    <style>
+        /* =========================================
+           THEME CONFIGURATION
+        ========================================= */
+        :root {
+            /* Colors */
+            --color-bg: #111116;
+            --color-pattern: rgba(247, 122, 13, 0.09);
+
+            --color-page: #191a20;
+            --color-section: #1e2028;
+            --color-card: #252731;
+            --color-card-hover: #2c2f3b;
+
+            --color-primary: #f77a0d;
+            --color-text: #f4f4f5;
+            --color-muted: #9295a5;
+            --color-border: #30323d;
+
+            /* Status colors */
+            --color-released: #36c98f;
+            --color-wip: #e9a23b;
+            --color-winner: #f7c948;
+            --color-discontinued: #ed7777;
+            --color-experimental: #a78bfa;
+
+            /* Typography */
+            --font-main: 'Segoe UI', sans-serif;
+
+            /* Layout */
+            --page-width: 1150px;
+            --page-padding: 45px;
+            --section-spacing: 35px;
+            --grid-gap: 20px;
+
+            /* Appearance */
+            --radius-page: 18px;
+            --radius-section: 14px;
+            --radius-card: 11px;
+            --radius-tag: 5px;
+
+            --card-image-height: 170px;
+
+            --transition-speed: 0.25s;
+        }
+
+        /* =========================================
+           RESET & GLOBAL
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--color-bg);
+
+            /* Decorative background pattern */
+            background-image:
+                radial-gradient(
+                    var(--color-pattern) 1px,
+                    transparent 1px
+                );
+
+            background-size: 24px 24px;
+
+            color: var(--color-text);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================================
+           MAIN PAGE CONTAINER
+        ========================================= */
+        .page {
+            width: min(
+                calc(100% - 50px),
+                var(--page-width)
+            );
+
+            min-height: 100vh;
+            margin: 35px auto;
+
+            padding: 0 var(--page-padding);
+
+            background: var(--color-page);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-page);
+
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        .header {
+            padding: 65px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header__profile {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .header__avatar {
+            width: 155px;
+            height: 155px;
+            flex-shrink: 0;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            border: 4px solid var(--color-section);
+            outline: 2px solid var(--color-primary);
+        }
+
+        .header__eyebrow {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .header__title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .header__description {
+            color: var(--color-muted);
+            max-width: 550px;
+            font-size: 1rem;
+        }
+
+        .header__socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .header__socials a {
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity var(--transition-speed);
+        }
+
+        .header__socials a:hover {
+            opacity: 0.65;
+        }
+
+        /* =========================================
+           PROJECT SECTIONS
+        ========================================= */
+        .projects {
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--section-spacing);
+        }
+
+        .projects-section {
+            padding: 28px;
+            background: var(--color-section);
+
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-section);
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+        }
+
+        .section-header__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .section-header__title {
+            font-size: 1.6rem;
+            font-weight: 750;
+        }
+
+        .section-header__description {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        .section-header__count {
+            color: var(--color-muted);
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+
+            border-radius: 20px;
+            padding: 3px 11px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           PROJECT GRID
+        ========================================= */
+        .project-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(220px, 1fr));
+
+            gap: var(--grid-gap);
+        }
+
+        /* =========================================
+           PROJECT CARD
+        ========================================= */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+
+            min-width: 0;
+            overflow: hidden;
+
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+
+            transition:
+                transform var(--transition-speed),
+                background var(--transition-speed),
+                border-color var(--transition-speed);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: var(--color-card-hover);
+            border-color: var(--color-primary);
+        }
+
+        .project-card__image {
+            width: 100%;
+            height: var(--card-image-height);
+
+            display: block;
+            object-fit: cover;
+
+            background: var(--color-border);
+        }
+
+        .project-card__content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            padding: 16px;
+        }
+
+        .project-card__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .project-card__description {
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+
+        .project-card__link {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        /* =========================================
+           PROJECT TAGS
+        ========================================= */
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+
+            margin-top: 13px;
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 3px 8px;
+
+            border-radius: var(--radius-tag);
+
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1.5;
+
+            background: var(--color-border);
+            color: var(--color-muted);
+        }
+
+        .project-tag--released {
+            background: rgba(54, 201, 143, 0.12);
+            color: var(--color-released);
+        }
+
+        .project-tag--wip {
+            background: rgba(233, 162, 59, 0.12);
+            color: var(--color-wip);
+        }
+
+        .project-tag--winner {
+            background: rgba(247, 201, 72, 0.12);
+            color: var(--color-winner);
+        }
+
+        .project-tag--discontinued {
+            background: rgba(237, 119, 119, 0.12);
+            color: var(--color-discontinued);
+        }
+
+        .project-tag--experimental {
+            background: rgba(167, 139, 250, 0.12);
+            color: var(--color-experimental);
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: 30px 0;
+
+            text-align: center;
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+        @media (max-width: 750px) {
+            :root {
+                --page-padding: 25px;
+                --section-spacing: 25px;
+            }
+
+            .page {
+                width: calc(100% - 30px);
+                margin: 15px auto;
+            }
+
+            .header {
+                padding: 45px 0;
+            }
+
+            .header__profile {
+                gap: 25px;
+            }
+
+            .header__avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .projects-section {
+                padding: 22px;
+            }
+
+            .project-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            :root {
+                --page-padding: 16px;
+                --card-image-height: 145px;
+            }
+
+            .page {
+                width: calc(100% - 20px);
+                margin: 10px auto;
+                border-radius: 12px;
+            }
+
+            .header {
+                padding: 40px 0;
+            }
+
+            .header__profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header__avatar {
+                width: 130px;
+                height: 130px;
+            }
+
+            .header__socials {
+                justify-content: center;
+            }
+
+            .projects {
+                padding: 25px 0;
+            }
+
+            .projects-section {
+                padding: 17px;
+            }
+
+            .section-header__title {
+                font-size: 1.35rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- =====================================
+             PERSONAL HEADER
+        ====================================== -->
+        <header class="header">
+
+            <div class="header__profile">
+
+                <img
+                    src="https://avatars.githubusercontent.com/u/14119119?v=4"
+                    alt="PikachuMazzinga"
+                    class="header__avatar"
+                >
+
+                <div class="header__info">
+
+                    <p class="header__eyebrow">
+                        PikachuMazzinga
+                    </p>
+
+                    <h1 class="header__title">
+                        Stuff by me
+                    </h1>
+
+                    <p class="header__description">
+                        Stuff by me, but written with a smaller font.
+                    </p>
+
+                    <div class="header__socials">
+
+                        <a href="https://github.com/PikachuMazzinga"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                        <a href="https://x.com/PkMazzz"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Twitter ↗
+                        </a>
+
+                        <a href="https://bsky.app/profile/pkmazz.bsky.social"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            BlueSky ↗
+                        </a>
+
+                        <a href="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Macaca_nigra_self-portrait_large.jpg/1280px-Macaca_nigra_self-portrait_large.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Monkey ↗
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- =====================================
+             PROJECTS
+        ====================================== -->
+        <main class="projects" id="portfolio"></main>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+        <footer class="footer">
+            Made with a keyboard and some spare time.
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================
+         PROJECT DATA
+    ========================================== -->
+    <script>
+
+        const sections = [
+
+            {
+                title: "Games",
+                description: "Games and fan projects I've worked on.",
+
+                projects: [
+
+                    {
+                        title: "Tower of Ashes",
+                        description: "Delve into a procedurally generated tower and uncover the past of an ancient civilization together with a fun cast of allies, winner of Eevee Expo Game Jam 2024.",
+                        image: "https://www.pokeharbor.com/wp-content/uploads/2024/08/Pokemon-Tower-Of-Ashes-RPGXP-FanGame.webp",
+                        link: "https://eeveeexpo.com/tower-of-ashes/",
+
+                        tags: [
+                            { label: "Released v1.0.5", type: "released" },
+                            { label: "Game Jam Winner", type: "winner" }
+                        ]
+                    },
+
+                    {
+                        title: "Garry vs The Sun",
+                        description: "A fun third-person adventure about going out of your comfort zone, inspired by A Short Hike and Lil Gator Game. Winner of the Eevee Expo Game Jam 2025",
+                        image: "https://raw.githubusercontent.com/PKMNStarbound/starfall-resources/main/_EEJAM11/screen_0.png",
+                        link: "https://eeveeexpo.com/garry-vs-the-sun/",
+
+                        tags: [
+                            { label: "Demo v0.1.0", type: "released" },
+                            { label: "Game Jam Winner", type: "winner" }
+                        ]
+                    },
+
+                    {
+                        title: "Aipom's Great Pirate Adventure",
+                        description: "TFT meets Slay the Spire in this pirate-themed, auto-chess fan-game winner of the Eevee Expo Game Jam 2026.",
+                        image: "https://x.com/i/status/2117791785875603784",
+                        link: "https://eeveeexpo.com/aipoms-great-pirate-adventure/",
+
+                        tags: [
+                            { label: "Released v1.0.3", type: "released" },
+                            { label: "Game Jam Winner", type: "winner" }
+                        ]
+                    }
+                ]
+            },
+
+            {
+                title: "Essentials Plugins",
+                description: "Tools and plugins for Pokémon Essentials.",
+
+                projects: [
+
+                    {
+                        title: "Gen 4 Battle Entry Animations",
+                        description: "Adds animations like those seen in NDS gen 4 games to your essentials game.",
+                        image: "https://eeveeexpo.com/resources/1725/",
+                        link: "https://raw.githubusercontent.com/PKMNStarbound/starfall-resources/main/_EEJAM10/anim01.gif.gif",
+
+                        tags: [
+                            { label: "Essentials v21.1", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "Plugin Two",
+                        description: "Extending the Pokémon Essentials experience.",
+                        image: "https://placehold.co/600x400",
+                        link: "https://example.com",
+
+                        tags: [
+                            { label: "Work In Progress", type: "wip" }
+                        ]
+                    },
+
+                    {
+                        title: "Plugin Three",
+                        description: "An experimental development tool.",
+                        image: "https://placehold.co/600x400",
+                        link: "https://example.com",
+
+                        tags: [
+                            { label: "Discontinued", type: "discontinued" }
+                        ]
+                    }
+                ]
+            },
+
+            {
+                title: "Other Projects",
+                description: "Miscellaneous experiments and creations.",
+
+                projects: [
+
+                    {
+                        title: "My Website",
+                        description: "A personal web development project.",
+                        image: "https://placehold.co/600x400",
+                        link: "https://example.com",
+
+                        tags: [
+                            { label: "Released", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "Another Project",
+                        description: "A little side project.",
+                        image: "https://placehold.co/600x400",
+                        link: "https://example.com",
+
+                        tags: [
+                            { label: "Experimental", type: "experimental" },
+                            { label: "Work In Progress", type: "wip" }
+                        ]
+                    }
+                ]
+            }
+
+        ];
+
+
+        /* =========================================
+           PORTFOLIO RENDERING
+        ========================================== */
+
+        const portfolio = document.getElementById("portfolio");
+
+        sections.forEach(section => {
+
+            const sectionElement = document.createElement("section");
+            sectionElement.className = "projects-section";
+
+            const header = document.createElement("div");
+            header.className = "section-header";
+
+            const headerTop = document.createElement("div");
+            headerTop.className = "section-header__top";
+
+            const title = document.createElement("h2");
+            title.className = "section-header__title";
+            title.textContent = section.title;
+
+            const count = document.createElement("span");
+            count.className = "section-header__count";
+            count.textContent = section.projects.length + " projects";
+
+            const description = document.createElement("p");
+            description.className = "section-header__description";
+            description.textContent = section.description;
+
+            headerTop.append(title, count);
+            header.append(headerTop, description);
+
+            const grid = document.createElement("div");
+            grid.className = "project-grid";
+
+            section.projects.forEach(project => {
+
+                const card = document.createElement("a");
+
+                card.className = "project-card";
+                card.href = project.link;
+                card.target = "_blank";
+                card.rel = "noopener noreferrer";
+
+                const image = document.createElement("img");
+                image.className = "project-card__image";
+                image.src = project.image;
+                image.alt = project.title;
+                image.loading = "lazy";
+
+                const content = document.createElement("div");
+                content.className = "project-card__content";
+
+                const projectTitle = document.createElement("h3");
+                projectTitle.className = "project-card__title";
+                projectTitle.textContent = project.title;
+
+                const projectDescription = document.createElement("p");
+                projectDescription.className = "project-card__description";
+                projectDescription.textContent = project.description;
+
+                const tags = document.createElement("div");
+                tags.className = "project-card__tags";
+
+                (project.tags || []).forEach(tag => {
+
+                    const tagElement = document.createElement("span");
+
+                    tagElement.className =
+                        "project-tag project-tag--" + tag.type;
+
+                    tagElement.textContent = tag.label;
+
+                    tags.appendChild(tagElement);
+                });
+
+                const linkText = document.createElement("span");
+                linkText.className = "project-card__link";
+                linkText.textContent = "View Project →";
+
+                content.append(
+                    projectTitle,
+                    projectDescription,
+                    tags,
+                    linkText
+                );
+
+                card.append(image, content);
+                grid.appendChild(card);
+
+            });
+
+            sectionElement.append(header, grid);
+            portfolio.appendChild(sectionElement);
+
+        });
+
+    </script>
+
+</body>
+</html>
