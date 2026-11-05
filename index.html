@@ -231,11 +231,8 @@
         ========================================= */
         .project-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fill, minmax(220px, 1fr));
-
-            gap: var(--grid-gap);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
         }
 
         /* =========================================
@@ -300,6 +297,33 @@
 
             margin-top: auto;
             padding-top: 15px;
+        }
+
+        /* =========================================
+           PROJECT ROLE
+        ========================================= */
+        .project-card__role {
+            margin-top: 14px;
+            padding: 10px 12px;
+            background: rgba(247, 122, 13, 0.06);
+            border-left: 2px solid var(--color-primary);
+            border-radius: 0 var(--radius-tag) var(--radius-tag) 0;
+        }
+
+        .project-card__role-label {
+            display: block;
+            color: var(--color-primary);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .project-card__role-description {
+            color: var(--color-muted);
+            font-size: 0.8rem;
+            line-height: 1.5;
         }
 
         /* =========================================
@@ -476,11 +500,11 @@
                     </p>
 
                     <h1 class="header__title">
-                        Stuff by me
+                        Stuff I've worked on
                     </h1>
 
                     <p class="header__description">
-                        Stuff by me, but written with a smaller font.
+                        Stuff I've worked on, but written with a smaller font.
                     </p>
 
                     <div class="header__socials">
@@ -526,6 +550,9 @@
         ====================================== -->
         <footer class="footer">
             Made with a keyboard and some spare time.
+            <br/>
+            <br/>
+            <img src="./Content/Images/loudog_honkshumimimimimimimiimimimimimimimiimimimmimmmimi.gif"/>
         </footer>
 
     </div>
@@ -545,10 +572,25 @@
                 projects: [
 
                     {
+                        title: "Pokémon Starfall",
+                        description: "Explore a whole new region, an inspiring set of characters and a slew of brand new Fakemon in this star-crossed adventure.",
+                        image: "https://github.com/PKMNStarbound/starfall-resources/blob/main/Post_003/ween3.gif?raw=true",
+                        link: "https://eeveeexpo.com/threads/8122/",
+
+                        role: "Sprites, UIs, Maps & Tiles",
+
+                        tags: [
+                            { label: "Work in Progress", type: "wip" }
+                        ]
+                    },
+
+                    {
                         title: "Tower of Ashes",
                         description: "Delve into a procedurally generated tower and uncover the past of an ancient civilization together with a fun cast of allies, winner of Eevee Expo Game Jam 2024.",
-                        image: "https://www.pokeharbor.com/wp-content/uploads/2024/08/Pokemon-Tower-Of-Ashes-RPGXP-FanGame.webp",
+                        image: "https://pbs.twimg.com/media/HNJ13A-XYAABIHP?format=jpg&name=medium",
                         link: "https://eeveeexpo.com/tower-of-ashes/",
+
+                        role: "Sprites, UIs, Maps & Tiles",
 
                         tags: [
                             { label: "Released v1.0.5", type: "released" },
@@ -559,8 +601,10 @@
                     {
                         title: "Garry vs The Sun",
                         description: "A fun third-person adventure about going out of your comfort zone, inspired by A Short Hike and Lil Gator Game. Winner of the Eevee Expo Game Jam 2025",
-                        image: "https://raw.githubusercontent.com/PKMNStarbound/starfall-resources/main/_EEJAM11/screen_0.png",
+                        image: "./Content/Images/gvs_tit.gif",
                         link: "https://eeveeexpo.com/garry-vs-the-sun/",
+
+                        role: "Voice acting & SFX",
 
                         tags: [
                             { label: "Demo v0.1.0", type: "released" },
@@ -571,52 +615,41 @@
                     {
                         title: "Aipom's Great Pirate Adventure",
                         description: "TFT meets Slay the Spire in this pirate-themed, auto-chess fan-game winner of the Eevee Expo Game Jam 2026.",
-                        image: "https://x.com/i/status/2117791785875603784",
+                        image: "./Content/Images/agpa.gif",
                         link: "https://eeveeexpo.com/aipoms-great-pirate-adventure/",
+
+                        role: "Sprites, UIs, Maps & Tiles",
 
                         tags: [
                             { label: "Released v1.0.3", type: "released" },
                             { label: "Game Jam Winner", type: "winner" }
                         ]
-                    }
-                ]
-            },
-
-            {
-                title: "Essentials Plugins",
-                description: "Tools and plugins for Pokémon Essentials.",
-
-                projects: [
+                    },
 
                     {
-                        title: "Gen 4 Battle Entry Animations",
-                        description: "Adds animations like those seen in NDS gen 4 games to your essentials game.",
-                        image: "https://eeveeexpo.com/resources/1725/",
-                        link: "https://raw.githubusercontent.com/PKMNStarbound/starfall-resources/main/_EEJAM10/anim01.gif.gif",
+                        title: "Phoenix Rising",
+                        description: "A game set in the Hawthorne Region boasting changes to the original formula including a more traditional RPG theme as well as many new features.",
+                        image: "https://i.imgur.com/TrnUEYJ.gif",
+                        link: "https://www.pokecommunity.com/threads/phoenix-rising.425404/",
+
+                        role: "Tile artist & UI designer",
 
                         tags: [
-                            { label: "Essentials v21.1", type: "released" }
+                            { label: "Released Chapter 1", type: "released" },
+                            { label: "Discontinued", type: "discontinued" }
                         ]
                     },
 
                     {
-                        title: "Plugin Two",
-                        description: "Extending the Pokémon Essentials experience.",
-                        image: "https://placehold.co/600x400",
-                        link: "https://example.com",
+                        title: "Pokémon Cremisi Portals",
+                        description: "The very first project I took part in, the final version, sadly, never saw the light of day.",
+                        image: "./Content/Images/cps.png",
+                        link: "https://pokehack.altervista.org/showthread.php?tid=2563",
+
+                        role: "Dev, Tile & Sprite artist",
 
                         tags: [
-                            { label: "Work In Progress", type: "wip" }
-                        ]
-                    },
-
-                    {
-                        title: "Plugin Three",
-                        description: "An experimental development tool.",
-                        image: "https://placehold.co/600x400",
-                        link: "https://example.com",
-
-                        tags: [
+                            { label: "Demo v0.1.0", type: "released" },
                             { label: "Discontinued", type: "discontinued" }
                         ]
                     }
@@ -624,31 +657,120 @@
             },
 
             {
-                title: "Other Projects",
-                description: "Miscellaneous experiments and creations.",
+                title: "Pokémon Essentials Plugins",
+                description: "Plugins I've worked on for Pokémon Essentials.",
 
                 projects: [
 
                     {
-                        title: "My Website",
-                        description: "A personal web development project.",
-                        image: "https://placehold.co/600x400",
-                        link: "https://example.com",
+                        title: "Gen 4 Battle Entry Animations",
+                        description: "Adds animations like those seen in NDS gen 4 games to your essentials game.",
+                        image: "./Content/Images/tutel.gif",
+                        link: "https://eeveeexpo.com/resources/1725/",
 
                         tags: [
-                            { label: "Released", type: "released" }
+                            { label: "Essentials v21.1", type: "released" }
                         ]
                     },
 
                     {
-                        title: "Another Project",
-                        description: "A little side project.",
-                        image: "https://placehold.co/600x400",
-                        link: "https://example.com",
+                        title: "Video Poker by FL",
+                        description: "It's a Video Poker minigame, specifically the Jokers Wild used in Dragon Quest. It uses coins like a Game Corner game.",
+                        image: "https://github.com/FL-/Essentials-VideoPoker/raw/main/Screens/gif.gif",
+                        link: "https://github.com/FL-/Essentials-VideoPoker",
+
+                        role: "Card sprites",
 
                         tags: [
-                            { label: "Experimental", type: "experimental" },
-                            { label: "Work In Progress", type: "wip" }
+                            { label: "Essentials v21.1", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "Bee Movie Script Credit Sequence",
+                        description: "Literally just the stock credits sequence but with the Bee Movie script instead.",
+                        image: "./Content/Images/bee.png",
+                        link: "https://eeveeexpo.com/resources/1903/",
+
+                        tags: [
+                            { label: "Essentials v21.1", type: "released" },
+                            { label: "April Fools", type: "discontinued" }
+                        ]
+                    }
+                ]
+            },
+
+            {
+                title: "Other Reosources and Utils",
+                description: "Miscellaneous Reosources and Utils.",
+
+                projects: [
+
+                    {
+                        title: "Frame 2 Project",
+                        description: "The complete resource that is meant to be used with the Gen 4 Battle Entry Animations, but also a generally good sprite repo.",
+                        image: "./Content/Images/raja.png",
+                        link: "https://github.com/PikachuMazzinga/frame2-project",
+
+                        tags: [
+                            { label: "Work in Progress", type: "wip" },
+                            { label: "95% Complete", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "Big Icons",
+                        description: "A project compiled and posted on DA by MBCMechachu, I just moved it to a public repo and renamed each icon for ease of access and use in Essentials.",
+                        image: "./Content/Images/pult.png",
+                        link: "https://github.com/PikachuMazzinga/BigIcons",
+
+                        tags: [
+                            { label: "Available", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "Shiny Icons",
+                        description: "A very old resource compiled back during ORAS times, this resource has been re-packed into countless others over time so just use those.",
+                        image: "./Content/Images/shiny_char.png",
+                        link: "https://www.deviantart.com/pikachumazzinga/art/Pokemon-Essentials-Icon-Pack---ORAS-UPDATE!-424114559",
+
+                        tags: [
+                            { label: "Available", type: "released" },
+                            { label: "Discontinued", type: "discontinued" }
+                        ]
+                    },
+
+                    {
+                        title: "DP Sprite Pack",
+                        description: "2-framed sprites straight from Diamond & Pearl.",
+                        image: "./Content/Images/dp_pika.png",
+                        link: "https://eeveeexpo.com/resources/1726/",
+
+                        tags: [
+                            { label: "Available", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "PT Sprite Pack",
+                        description: "2-framed sprites straight from Platinum.",
+                        image: "./Content/Images/pt_pika.png",
+                        link: "https://eeveeexpo.com/resources/1727/",
+
+                        tags: [
+                            { label: "Available", type: "released" }
+                        ]
+                    },
+
+                    {
+                        title: "HGSS Sprite Pack",
+                        description: "2-framed sprites straight from Heart Gold & Soul Silver.",
+                        image: "./Content/Images/hgss_pika.png",
+                        link: "https://eeveeexpo.com/resources/1728/",
+
+                        tags: [
+                            { label: "Available", type: "released" }
                         ]
                     }
                 ]
@@ -680,7 +802,7 @@
 
             const count = document.createElement("span");
             count.className = "section-header__count";
-            count.textContent = section.projects.length + " projects";
+            count.textContent = section.projects.length + " items";
 
             const description = document.createElement("p");
             description.className = "section-header__description";
@@ -718,6 +840,23 @@
                 projectDescription.className = "project-card__description";
                 projectDescription.textContent = project.description;
 
+                let role = null;
+
+                if (project.role?.trim()) {
+                    role = document.createElement("div");
+                    role.className = "project-card__role";
+
+                    const roleLabel = document.createElement("span");
+                    roleLabel.className = "project-card__role-label";
+                    roleLabel.textContent = "My Role";
+
+                    const roleDescription = document.createElement("p");
+                    roleDescription.className = "project-card__role-description";
+                    roleDescription.textContent = project.role;
+
+                    role.append(roleLabel, roleDescription);
+                }
+
                 const tags = document.createElement("div");
                 tags.className = "project-card__tags";
 
@@ -735,11 +874,16 @@
 
                 const linkText = document.createElement("span");
                 linkText.className = "project-card__link";
-                linkText.textContent = "View Project →";
+                // linkText.textContent = "View Project ↗";
 
                 content.append(
                     projectTitle,
-                    projectDescription,
+                    projectDescription
+                );
+
+                if (role) content.append(role);
+
+                content.append(
                     tags,
                     linkText
                 );
